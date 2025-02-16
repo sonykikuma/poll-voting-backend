@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.send("Hello, poll voting!");
 });
 
-// Create a poll
+//1. Create a poll
 app.post("/polls", async (req, res) => {
   const { question, options } = req.body;
   if (!question || !options || options.length < 2) {
@@ -37,7 +37,13 @@ app.post("/polls", async (req, res) => {
   res.status(201).json(poll);
 });
 
-// Vote on a poll
+//2. Get all polls
+app.get("/polls", async (req, res) => {
+  const polls = await Poll.find();
+  res.json(polls);
+});
+
+//3. Vote on a poll
 app.post("/polls/:id/vote", async (req, res) => {
   const { id } = req.params;
   const { optionIndex } = req.body;
@@ -53,7 +59,7 @@ app.post("/polls/:id/vote", async (req, res) => {
   res.json(poll);
 });
 
-// Get poll results
+//4. Get poll results
 app.get("/polls/:id", async (req, res) => {
   const poll = await Poll.findById(req.params.id);
   if (!poll) {
