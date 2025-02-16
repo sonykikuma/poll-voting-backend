@@ -2,9 +2,9 @@
 This is the backend for a poll voting system built with Node.js, Express, and MongoDB. 
 It allows users to create polls, vote on them, and view poll results in real-time.
 
-🚀 Features
-Create a poll with a question and multiple options
-Vote on a poll
+🚀 Features: 
+Create a poll with a question and multiple options, 
+Vote on a poll, 
 View poll results
 
 
